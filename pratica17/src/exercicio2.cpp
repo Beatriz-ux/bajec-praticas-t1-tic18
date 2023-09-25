@@ -5,29 +5,29 @@ using namespace std;
 
 class Ponto{
     private:
-        float x;
-        float y;
+        double x;
+        double y;
     public:
-        Ponto(float _x = 0, float _y = 0){
+        Ponto(double _x = 0, double _y = 0){
             x = _x;
             y = _y;
         }
 
-        float getX(){
+        double getX(){
             return x;
         }
-        float getY(){
+        double getY(){
             return y;
         }
 
-        void setX(float _x){
+        void setX(double _x){
             x = _x;
         }
-        void setY(float _y){
+        void setY(double _y){
             y = _y;
         }
 
-        float distancia(Ponto p){
+        double distancia(Ponto p){
             return sqrt(pow(p.x - x, 2) + pow(p.y - y, 2));
         }
 
@@ -35,7 +35,7 @@ class Ponto{
             return to_string(3);
         }
         string toString(int casasDecimais){
-            float aux = pow(10, casasDecimais);
+            double aux = pow(10, casasDecimais);
             string strX = to_string(round(x * aux) / aux);
             string strY = to_string(round(y * aux) / aux);
 
@@ -44,7 +44,7 @@ class Ponto{
 };
 
 int main(){
-    
+    Ponto p1(3, 4);
 
     return 0;
 }
