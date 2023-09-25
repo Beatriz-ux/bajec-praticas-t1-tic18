@@ -2,6 +2,13 @@
 
 using namespace std;
 
+struct aluno{
+    string nome;
+    string sobrenome;
+    int idade;
+    int numMatricula;
+};
+
 struct professor{
     string nome;
     string sobrenome;
