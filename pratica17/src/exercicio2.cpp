@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cmath>
+#include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -27,24 +29,37 @@ class Ponto{
             y = _y;
         }
 
-        double distancia(Ponto p){
-            return sqrt(pow(p.x - x, 2) + pow(p.y - y, 2));
+        double distancia(){
+            return sqrt(pow(x, 2) + pow(y, 2));
         }
 
         string toString(){
-            return to_string(3);
+            return toString(3);
         }
         string toString(int casasDecimais){
-            double aux = pow(10, casasDecimais);
-            string strX = to_string(round(x * aux) / aux);
-            string strY = to_string(round(y * aux) / aux);
+            string strX = to_string(x);
+            string strY = to_string(y);
+            strX = strX.substr(0, strX.find(".") + casasDecimais + 1);
+            strY = strY.substr(0, strY.find(".") + casasDecimais + 1);
 
             return "(" + strX + ", " + strY + ")";
+        }
+        string toString(string nome, int casasDecimais){
+            return nome + toString(casasDecimais);
+        }
+        string toString(string nome){
+            return toString(nome, 3);
         }
 };
 
 int main(){
-    Ponto p1(3, 4);
+    int precisao = 2;
+    cout << fixed << setprecision(precisao);
 
+    Ponto p1(3, 4);
+    double distancia = p1.distancia();
+
+
+    cout << "Distancia " + p1.toString("p1", precisao) + " pra origem: " << distancia << endl;
     return 0;
 }
