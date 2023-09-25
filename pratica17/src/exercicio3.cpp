@@ -6,19 +6,35 @@ using namespace std;
 class Produto{
     private:
         string nome;
-        double preco;
+        float preco;
+        int codigo;
     public:
-        Produto(){
-            nome = "";
-            preco = 0;
-        }
-        Produto(string nome, double preco){
+        Produto(string nome = "", float preco = 0, int codigo = 0){
             this->nome = nome;
             this->preco = preco;
+            this->codigo = codigo;
         }
-        double getPreco(){
+
+        float getPreco(){
             return preco;
         }
+        int getCodigo(){
+            return codigo;
+        }
+        string getNome(){
+            return nome;
+        }
+
+        void setPreco(float preco){
+            this->preco = preco;
+        }
+        void setCodigo(int codigo){
+            this->codigo = codigo;
+        }
+        void setNome(string nome){
+            this->nome = nome;
+        }
+
 };
 
 class Estoque{
