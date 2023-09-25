@@ -89,7 +89,13 @@ int main(){
         nome = "p" + to_string(i + 1);
         distancia = pontos[i].distancia();
         cout << "Distância do ponto " << pontos[i].toString(nome, precisao)<< " até a origem: " << distancia << endl;
-}
+    }
+
+    // teste 5
+    Ponto p5;
+    cout << "\n\nCoordenadas do ponto p5: (" << p5.getX() << ", " << p5.getY() << ")" << endl;
+    p5.setCoordenadas(8, -3);
+    cout << "Novas coordenadas do ponto p5: (" << p5.getX() << ", " << p5.getY() << ")" << endl;
 
     return 0;
 }
