@@ -77,7 +77,19 @@ int main(){
     double distancia_p3 = p3.distancia();
     double distancia_p4 = p4.distancia();
     cout << "\n\nDistancia " + p3.toString("p3", precisao) + " pra origem: " << distancia_p3;
-    cout << " e distancia " + p4.toString("p4", precisao) + " pra origem: " << distancia_p4 << endl;
+    cout << " e distancia " + p4.toString("p4", precisao) + " pra origem: " << distancia_p4 << endl << endl;
+
+    // teste 4
+    Ponto pontos[3];
+    string nome;
+    pontos[0].setCoordenadas(2, 2);
+    pontos[1].setCoordenadas(-1, 5);
+    pontos[2].setCoordenadas(0, 0);
+    for (int i = 0; i < 3; ++i) {
+        nome = "p" + to_string(i + 1);
+        distancia = pontos[i].distancia();
+        cout << "Distância do ponto " << pontos[i].toString(nome, precisao)<< " até a origem: " << distancia << endl;
+}
 
     return 0;
 }
