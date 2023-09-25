@@ -33,7 +33,7 @@ class ItemSet{
             }
             cout << endl;
         }
-        ItemSet operator==(ItemSet &itemSet){
+        ItemSet operator=(ItemSet &itemSet){
             this->itens = itemSet.itens;
             return *this;
         }
@@ -63,7 +63,7 @@ int main(){
     switch (opcao)
     {
     case 1:
-        A == B;
+        A = B;
         cout << "A: ";
         A.printItens();
         break;
