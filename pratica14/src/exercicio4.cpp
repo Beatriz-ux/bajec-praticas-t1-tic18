@@ -51,7 +51,6 @@ void menu(){
             cout << "Saindo..." << endl;
             break;
         case 1:
-            float raio;
             cout << "Digite o raio do circulo: ";
             cin >> raio;
 
