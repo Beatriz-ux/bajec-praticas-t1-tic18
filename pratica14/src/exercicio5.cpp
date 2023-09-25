@@ -7,5 +7,21 @@ struct aluno{
     string sobrenome;
     int idade;
     int numMatricula;
-    string curso;
 };
+
+struct professor{
+    string nome;
+    string sobrenome;
+    int numRegistro;
+};
+
+struct disciplina{
+    string nome;
+    int cargaHoraria;
+    professor prof;
+};
+
+int main(void){
+
+    return 0;
+}
