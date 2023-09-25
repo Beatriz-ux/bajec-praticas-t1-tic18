@@ -28,6 +28,10 @@ class Ponto{
         void setY(double _y){
             y = _y;
         }
+        void setCoordenadas(double _x, double _y){
+            this->setX(_x);
+            this->setY(_y);
+        }
 
         double distancia(){
             return sqrt(pow(x, 2) + pow(y, 2));
@@ -56,10 +60,17 @@ int main(){
     int precisao = 2;
     cout << fixed << setprecision(precisao);
 
+    // teste 1
     Ponto p1(3, 4);
     double distancia = p1.distancia();
+    cout << "Distancia " + p1.toString("p1", precisao) + " pra origem: " << distancia;
+    
+    // teste 2
+    Ponto p2(-2, 7);
+    p2.setCoordenadas(1, 1);
+    distancia = p2.distancia();
+    cout << "\n\nDistancia " + p2.toString("p2", precisao) + " pra origem: " << distancia << endl;
 
 
-    cout << "Distancia " + p1.toString("p1", precisao) + " pra origem: " << distancia << endl;
     return 0;
 }
