@@ -32,6 +32,8 @@ float perimetroCirculo(float raio){
 
 void menu(){
     int opt;
+    float raio;
+    double lado;
 
     do{
         cout << "------------MENU------------\n" << endl;
@@ -56,21 +58,18 @@ void menu(){
             cout << "Area do circulo: " << areaCirculo(raio) << endl;
             break;
         case 2:
-            float raio;
             cout << "Digite o raio do circulo: ";
             cin >> raio;
             
             cout << "Perimetro do circulo: " << perimetroCirculo(raio) << endl;
             break;
         case 3:
-            double lado;
             cout << "Digite o lado do quadrado: ";
             cin >> lado;
 
             cout << "Area do quadrado: " << areaQuadrado(lado) << endl;
             break;
         case 4:
-            double lado;
             cout << "Digite o lado do quadrado: ";
             cin >> lado;
 
