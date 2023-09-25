@@ -10,9 +10,6 @@ class ItemSet{
         ItemSet(){
             itens = vector<string>();
         }
-        ItemSet(ItemSet &itemSet){
-            itens = itemSet.itens;
-        }
         void inserir(string item){
             for(int i = 0; i < itens.size(); ++i){
                 if(itens[i] == item){
@@ -36,18 +33,23 @@ class ItemSet{
             }
             cout << endl;
         }
+        ItemSet operator=(ItemSet &itemSet){
+            this->itens = itemSet.itens;
+            return *this;
+        }
 };
 
 int main(){
 
     int opcao;
     ItemSet A;
+    ItemSet B;
     
-    A.inserir("item1");
-    A.inserir("item2");
+    B.inserir("item1");
+    B.inserir("item2");
 
-    cout << "A: ";
-    A.printItens();
+    cout << "B: ";
+    B.printItens();
 
     cout << "Insira sua operação: " << endl;
     cout << "1 - A = B" << endl;
@@ -61,11 +63,10 @@ int main(){
     switch (opcao)
     {
     case 1:
-        ItemSet B(A);
-        cout << "B: ";
-        B.printItens();
+        A = B;
+        cout << "A: ";
+        A.printItens();
         break;
     };
-
     return 0;
 }
