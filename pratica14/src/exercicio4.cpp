@@ -11,6 +11,8 @@ float areaCirculo(float raio);
 float perimetroCirculo(float raio);
 float areaTriangulo(float base, float altura);
 float perimetroTriangulo(float lado1, float lado2, float lado3);
+void areaTrapezio();
+void perimetroTrapezio();
 
 int main(void){
     menu(3);    
@@ -42,6 +44,34 @@ float perimetroTriangulo(float lado1, float lado2, float lado3){
     return lado1 + lado2 + lado3;
 }
 
+void areaTrapezio()
+{
+    float bMenor, bMaior, h;
+    cout << "Digite a base menor do trapezio: ";
+    cin >> bMenor;
+    cout << "Digite a base maior do trapezio: ";
+    cin >> bMaior;
+    cout << "Digite a altura do trapezio: ";
+    cin >> h;
+
+    cout << "Area do trapezio: " << ((bMenor + bMaior) * h)/2 << endl;
+}
+
+void perimetroTrapezio()
+{
+    float bMenor, bMaior, lado1, lado2;
+    cout << "Digite a base menor do trapezio: ";
+    cin >> bMenor;
+    cout << "Digite a base maior do trapezio: ";
+    cin >> bMaior;
+    cout << "Digite o lado 1 do trapezio: ";
+    cin >> lado1;
+    cout << "Digite o lado 2 do trapezio: ";
+    cin >> lado2;
+
+    cout << "Perimetro do trapezio: " << (bMenor + bMaior + lado1 + lado2) << endl;
+}
+
 void menu(int precisao){
     int opt;
     float raio, lado1, lado2, lado3, altura, base;
@@ -57,6 +87,8 @@ void menu(int precisao){
         cout << "4 - Perimetro do quadrado" << endl;
         cout << "5 - Area do triangulo" << endl;
         cout << "6 - Perimetro do triangulo" << endl;
+        cout << "7 - Area do trapezio" << endl;
+        cout << "8 - Perimetro do trapezio" << endl;
         cout << "0 - Sair" << endl;
 
         cout << "Digite uma opcao: ";
@@ -109,6 +141,12 @@ void menu(int precisao){
             cin >> lado3;
 
             cout << "Perimetro do triangulo: " << perimetroTriangulo(lado1, lado2, lado3) << endl;
+            break;
+        case 7:
+            areaTrapezio();
+            break;
+        case 8:
+            perimetroTrapezio();
             break;
         default:
             cout << "Opcao invalida!" << endl;
