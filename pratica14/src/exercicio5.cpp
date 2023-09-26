@@ -23,6 +23,13 @@ struct disciplina{
     int cargaHoraria;
 };
 
+// dev: Caua
+struct instituicao{
+    string data_fundacao;
+    string localizacao;
+    int codigo_mec;
+};
+
 // dev: everaldina
 struct turma{
     int ano;
