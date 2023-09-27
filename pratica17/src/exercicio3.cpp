@@ -64,7 +64,7 @@ class Estoque{
                 if(produtos[i].getCodigo() == codigo){
                     produtos.erase(produtos.begin() + i);
                     qtdProdutos.erase(qtdProdutos.begin() + i);
-                    break;
+                    return;
                 }
             }
 
@@ -196,11 +196,21 @@ class CarrinhoDeCompras{
 
             estoque.setQtdProduto(produto.getCodigo(), estoque.getQtdProduto(produto.getCodigo()) - qtd);
         }
+
+        void esvaziarCarrinho(){
+            int i;
+            int tamanho = estoque.getQtdProdutos();
+            for (i = 0; i < tamanho; i++){
+                estoque.removerProduto(estoque.getProduto(0).getCodigo());
+            }
+        }
 };
 
 int main(){
     srand(time(NULL));
 
+    // teste 1
+    cout << "Teste 1" << endl;
     Produto p1("Maçã", 2.5);
     Produto p2("Arroz", 10.0);
     Produto p3("Leite", 4.0);
@@ -212,10 +222,29 @@ int main(){
 
     double valorTotal = carrinho.calcularValorTotal();
     cout << "Valor total: " << valorTotal << endl;
+    cout << "\n\n";
 
+    // teste 2
+    cout << "Teste 2" << endl;
     carrinho.removerProduto(p2, 1);
     valorTotal = carrinho.calcularValorTotal();
     cout << "Valor total apos remocao: " << valorTotal << endl;
+    cout << "\n\n";
+
+    // teste 3
+    cout << "Teste 3" << endl;
+    carrinho.esvaziarCarrinho();
+    valorTotal = carrinho.calcularValorTotal();
+    cout << "Valor total após esvaziar o carrinho: " << valorTotal << endl;
+    cout << "\n\n";
+
+    // teste 4
+    cout << "Teste 4" << endl;
+    cout << "\n\n";
+
+    // teste 5
+    cout << "Teste 5" << endl;
+    cout << "\n\n";
 
     return 0;
 }
