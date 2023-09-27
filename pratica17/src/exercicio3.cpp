@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -40,7 +41,7 @@ class Produto{
 class Estoque{
     private:
         int qtdProduto;
-        Produto produto;
+        vector<Produto> produtos;
     public:
         Estoque(){
             qtdProduto = 0;
