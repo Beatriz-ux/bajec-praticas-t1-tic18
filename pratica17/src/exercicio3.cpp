@@ -199,6 +199,7 @@ class CarrinhoDeCompras{
 };
 
 int main(){
+    srand(time(NULL));
 
     Produto p1("Maçã", 2.5);
     Produto p2("Arroz", 10.0);
