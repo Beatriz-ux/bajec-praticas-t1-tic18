@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -27,15 +28,52 @@ class ItemSet{
                 }
             }
         }
+
+        bool buscar(string item){
+            for(int i = 0; i < itens.size(); ++i){
+                if(itens[i] == item)
+                    return true;
+            }
+            return false;
+        }
+
         void printItens(){
             for(int i = 0; i < itens.size(); ++i){
                 cout << itens[i] << " ";
             }
             cout << endl;
         }
+
+        int qntdItens(){
+            return itens.size();
+        }
+
         ItemSet operator=(ItemSet &itemSet){
             this->itens = itemSet.itens;
             return *this;
+        }
+
+        ItemSet operator-(ItemSet itemSetB){
+            ItemSet result;
+
+            for(string sB : itemSetB.itens){
+                if(!buscar(sB))
+                    result.inserir(sB);
+            }
+
+            return result;
+        }
+
+        bool operator==(ItemSet itemSetB){
+            if(this->itens.size() != itemSetB.itens.size())
+                return false;
+
+            for(string sB : itemSetB.itens){
+                if(!buscar(sB))
+                    return false;
+            }
+            return true;
+            
         }
 };
 
@@ -48,7 +86,10 @@ int main(){
     
     B.inserir("item1");
     B.inserir("item2");
+    B.inserir("item3");
 
+    C.inserir("item2");
+    C.inserir("item3");
 
 
     cout << "\n1 - A = B" << endl;
@@ -56,7 +97,7 @@ int main(){
     cout << "3 - A = B * C" << endl;
     cout << "4 - A = B - C" << endl;
     cout << "5 - A = B <> C" << endl;
-    cout << "6 - A = B == C" << endl;
+    cout << "6 - B == C" << endl;
     cout << "0 - Sair" << endl;
     cout << "Opção: ";
     cin >> opcao;
@@ -78,6 +119,13 @@ int main(){
         case 3: // A = B * C
             break;
         case 4: // A = B - C
+            cout << "B: ";
+            B.printItens();
+            cout << "C: ";
+            C.printItens();
+            //A = B - C;
+            cout << "A: ";
+            (B-C).printItens();
             break;
         case 5: // A = B <> C
             break;
