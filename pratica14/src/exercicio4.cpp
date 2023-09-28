@@ -89,6 +89,8 @@ void menu(int precisao){
         cout << "6 - Perimetro do triangulo" << endl;
         cout << "7 - Area do trapezio" << endl;
         cout << "8 - Perimetro do trapezio" << endl;
+        cout << "9 - Area do Hexagono" << endl;
+        cout << "10 - Perimetro do Hexagono" << endl;
         cout << "0 - Sair" << endl;
 
         cout << "Digite uma opcao: ";
@@ -147,6 +149,17 @@ void menu(int precisao){
             break;
         case 8:
             perimetroTrapezio();
+            break;
+        case 9:
+
+            cout << "Digite o lado do hexagono: ";
+            cin >> lado;
+            cout << "Area do Hexagono:"<<areaHexagono(lado);
+            break;
+        case 10:
+            cout << "Digite o lado do hexagono: ";
+            cin >> lado;
+            cout << "Perimetro do Hexagono:"<<perimetroHexagono(lado) << endl;
             break;
         default:
             cout << "Opcao invalida!" << endl;
