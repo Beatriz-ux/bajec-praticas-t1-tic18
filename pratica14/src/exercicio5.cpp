@@ -37,6 +37,14 @@ struct turma{
     aluno alunos[TAM_TURMA];
 };
 
+// dev: Caua
+struct diretor{
+    string nome;
+    string sobrenome;
+    string grau_academico;
+    int tempo_de_atuacao;
+};
+
 struct Escola{
     string nome;
     string endereco;
@@ -47,6 +55,7 @@ struct Escola{
 
     vector <professor> professores;
     vector <disciplina> disciplinas;
+    diretor Diretor;
 };
 
 void estruturaEscola(Escola escola);
@@ -131,6 +140,13 @@ int main(void){
     escola.numProfessores = escola.professores.size();
     escola.numDisciplinas = escola.disciplinas.size();
     
+    diretor Diretor;
+    Diretor.nome = "Jose";
+    Diretor.sobrenome = "Oliveira";
+    Diretor.tempo_de_atuacao = 10;
+    Diretor.grau_academico = "Doutor";
+    escola.Diretor = Diretor;
+
     estruturaEscola(escola);
 
 
@@ -141,6 +157,7 @@ int main(void){
 }
 void estruturaEscola(Escola escola){
     cout << "Nome da escola: " << escola.nome << endl;
+    cout << "Nome do Diretor: " << escola.Diretor.nome << " " << escola.Diretor.sobrenome << endl;
     cout << "Endereco da escola: " << escola.endereco << endl;
     cout << "Numero de turmas: " << escola.numTurmas << endl;
     cout << "Numero de professores: " << escola.numProfessores << endl;
@@ -149,7 +166,7 @@ void estruturaEscola(Escola escola){
     for(int i = 0; i < escola.numTurmas; i++){
         cout << "\tTurma " << i + 1 << endl;
         cout << "\tAno: " << escola.turmas[i].ano << endl;
-        cout << "\tAtiva: " << escola.turmas[i].ativa << endl;
+        cout << "\tAtiva: " << (escola.turmas[i].ativa ? "Sim" : "Nao") << endl;
         cout << "\tSemestre: " << escola.turmas[i].semestre << endl;
         cout << "\tNumero de alunos: " << escola.turmas[i].numAlunos << endl;
         cout << "\tProfessor da turma: ";
