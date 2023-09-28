@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-
-
 const int TAM_TURMA = 30;
 
 using namespace std;
@@ -125,8 +123,6 @@ int main(void){
     turma2.codDisciplina = 2;
     turma2.codProfessor = 2;
 
-
-
     turma1.alunos[0] = aluno1;
     turma1.alunos[1] = aluno2;
     turma1.numAlunos = 2;
@@ -149,10 +145,6 @@ int main(void){
     escola.Diretor = Diretor;
 
     estruturaEscola(escola);
-
-
-
-
 
     return 0;
 }
