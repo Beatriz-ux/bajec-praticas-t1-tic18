@@ -107,6 +107,7 @@ int main(void){
     aluno2.nome = "Ana";
     aluno2.sobrenome = "Santos";
     aluno2.idade = 16;
+    aluno2.numMatricula = 2;
 
     turma turma1;
     turma1.ano = 2023;
