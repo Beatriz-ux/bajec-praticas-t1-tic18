@@ -83,7 +83,7 @@ int main(){
         cout << "3 - Remover item de conjunto" << endl;
         cout << "4 - Listar conjuntos" << endl;
         cout << "0 - Sair" << endl;
-        cout << "Digite a opcao desejada: ";
+        cout << "Opcao: ";
         cin >> opc;
 
         switch(opc){
@@ -94,43 +94,49 @@ int main(){
             case 2:
                 // verificando se existem conjuntos
                 if (sets.size() == 0){
-                    cout << "Nao existem conjuntos criados!" << endl;
+                    cout << "\nNao existem conjuntos criados!\n\n";
                     break;
                 }
 
                 // definindo indice do conjunto
                 if(opc == 2){
-                    cout << "Digite indice do conjunto: ";
+                    cout << "\nDigite indice do conjunto: ";
                     cin >> i;
                     if(i < 0){
-                        cout << "Indice invalido!" << endl;
+                        cout << "Indice invalido!\n\n";
                         break;
                     }
                     if(i >= sets.size()){
-                        cout << "Conjunto nao existe!" << endl;
+                        cout << "Conjunto nao existe!\n\n";
                         break;
                     }
                 }else
                     i = sets.size() - 1;
                 
                 // inserindo item
-                cout << "Digite o item a ser inserido: ";
+                cout << "\nDigite o item a ser inserido: ";
                 cin >> item;
                 if(sets[i].inserirItem(item))
-                    cout << "Item inserido com sucesso!" << endl;
+                    cout << "Item inserido com sucesso!\n" << endl;
                 else
-                    cout << "Item ja existe no conjunto!" << endl;
+                    cout << "Item ja existe no conjunto!\n" << endl;
                 break;
             case 3:
+                // verificando se existem conjuntos
+                if (sets.size() == 0){
+                    cout << "\nNao existem conjuntos criados!\n\n";
+                    break;
+                }
+
                 // definindo indice do conjunto
-                cout << "Digite o indice do conjunto: ";
+                cout << "\nDigite o indice do conjunto: ";
                 cin >> i;
                 if(i < 0){
-                    cout << "Indice invalido!" << endl;
+                    cout << "Indice invalido!\n\n";
                     break;
                 }
                 if(i >= sets.size()){
-                    cout << "Conjunto nao existe!" << endl;
+                    cout << "Conjunto nao existe!\n\n";
                     break;
                 }
 
@@ -138,19 +144,32 @@ int main(){
                 cout << "Digite o item a ser removido: ";
                 cin >> item;
                 if(sets[i].deleteItem(item))
-                    cout << "Item removido com sucesso!" << endl;
+                    cout << "Item removido com sucesso!\n\n";
                 else
-                    cout << "Item nao existe no conjunto!" << endl;
+                    cout << "Item nao existe no conjunto!\n\n";
                 break;
             case 4:
+                // verificando se existem conjuntos
+                if (sets.size() == 0){
+                    cout << "\nNao existem conjuntos criados!\n\n";
+                    break;
+                }
+
+                cout << endl;
                 for(int i = 0; i < sets.size(); i++){
                     cout << "Conjunto [" << i << "]: ";
                     cout << sets[i].printItens();
                     cout << endl;
                 }
+                cout << endl;
                 break;
             default:
-                cout << "Opcao invalida!" << endl;
+                do{
+                    cin.ignore();
+                    cout << "Opcao invalida!" << endl;
+                    cout << "Opcao: ";
+                    cin >> opc;
+                }while(opc < 0 || opc > 4);
                 break;
         }
 
