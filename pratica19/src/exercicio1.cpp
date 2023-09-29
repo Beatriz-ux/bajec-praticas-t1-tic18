@@ -115,7 +115,8 @@ int main(){
                 
                 // inserindo item
                 cout << "\nDigite o item a ser inserido: ";
-                cin >> item;
+                getline(cin, item);
+                cin.ignore();
                 if(sets[i].inserirItem(item))
                     cout << "Item inserido com sucesso!\n" << endl;
                 else
@@ -142,7 +143,8 @@ int main(){
 
                 // removendo item
                 cout << "Digite o item a ser removido: ";
-                cin >> item;
+                getline(cin, item);
+                cin.ignore();
                 if(sets[i].deleteItem(item))
                     cout << "Item removido com sucesso!\n\n";
                 else
