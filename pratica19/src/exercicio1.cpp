@@ -18,10 +18,12 @@ class ItemSet{
         vector<string> getItens(){
             return itens;
         }
+
         void setItens(vector<string> itens){
             this->itens = itens;
         }
 
+        // insere item no conjunto, retorna true se item foi inserido
         bool inserirItem(string s){
             if(itemPertence(s))
                 return false;
@@ -30,6 +32,7 @@ class ItemSet{
                 return true;
         }
 
+        // deleta item do conjunto, retorna true se item foi excluido
         bool deleteItem(string s){
             int i;
             for(i = 0; i < itens.size(); i++){
@@ -41,6 +44,7 @@ class ItemSet{
             return false;
         }
 
+        // return true se item pertence ao conjunto
         bool itemPertence(string s){
             for(string item : itens){
                 if(item == s)
@@ -49,6 +53,7 @@ class ItemSet{
             return false;
         }
 
+        // retorna indice do item no vetor, -1 se nao existir   
         int buscarItem(string s){
             for(int i = 0; i < itens.size(); i++){
                 if(itens[i] == s)
@@ -57,11 +62,20 @@ class ItemSet{
             return -1;
         }
 
+        string printItens(){
+            string s = "";
+            for(string item : itens){
+                s += item + " ";
+            }
+            return s;
+        }
+
 };
 
 int main(){
     vector<ItemSet> sets;
     int opc, i;
+    string item;
 
     do{
         cout << "1 - Criar novo conjunto" << endl;
@@ -78,7 +92,13 @@ int main(){
             case 1:
                 sets.push_back(ItemSet());
             case 2:
-                string item;
+                if (sets.size() == 0){
+                    cout << "Nao existem conjuntos criados!" << endl;
+                    break;
+                }
+                if(opc == 2){
+
+                }
                 cout << "Digite o item a ser inserido: ";
                 cin >> item;
                 cout << "Digite o indice do conjunto: ";
