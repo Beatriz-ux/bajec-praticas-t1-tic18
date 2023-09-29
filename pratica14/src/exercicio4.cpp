@@ -13,34 +13,43 @@ float areaTriangulo(float base, float altura);
 float perimetroTriangulo(float lado1, float lado2, float lado3);
 void areaTrapezio();
 void perimetroTrapezio();
+double areaHexagono(double lado);
+double perimetroHexagono(double lado);
 
-int main(void){
-    menu(3);    
+int main(void)
+{
+    menu(3);
 
     return 0;
 }
 
-double areaQuadrado(double lado) {
+double areaQuadrado(double lado)
+{
     return lado * lado;
 }
 
-double perimetroQuadrado(double lado) {
+double perimetroQuadrado(double lado)
+{
     return 4 * lado;
 }
 
-float areaCirculo(float raio){
+float areaCirculo(float raio)
+{
     return M_PI * raio * raio;
 }
 
-float perimetroCirculo(float raio){
+float perimetroCirculo(float raio)
+{
     return 2 * M_PI * raio;
 }
 
-float areaTriangulo(float base, float altura){
+float areaTriangulo(float base, float altura)
+{
     return (base * altura) / 2;
 }
 
-float perimetroTriangulo(float lado1, float lado2, float lado3){
+float perimetroTriangulo(float lado1, float lado2, float lado3)
+{
     return lado1 + lado2 + lado3;
 }
 
@@ -54,7 +63,7 @@ void areaTrapezio()
     cout << "Digite a altura do trapezio: ";
     cin >> h;
 
-    cout << "Area do trapezio: " << ((bMenor + bMaior) * h)/2 << endl;
+    cout << "Area do trapezio: " << ((bMenor + bMaior) * h) / 2 << endl;
 }
 
 void perimetroTrapezio()
@@ -72,15 +81,18 @@ void perimetroTrapezio()
     cout << "Perimetro do trapezio: " << (bMenor + bMaior + lado1 + lado2) << endl;
 }
 
-void menu(int precisao){
+void menu(int precisao)
+{
     int opt;
     float raio, lado1, lado2, lado3, altura, base;
     double lado;
 
     cout << fixed << setprecision(precisao);
 
-    do{
-        cout << "------------MENU------------\n" << endl;
+    do
+    {
+        cout << "------------MENU------------\n"
+             << endl;
         cout << "1 - Area do circulo" << endl;
         cout << "2 - Perimetro do circulo" << endl;
         cout << "3 - Area do quadrado" << endl;
@@ -89,14 +101,15 @@ void menu(int precisao){
         cout << "6 - Perimetro do triangulo" << endl;
         cout << "7 - Area do trapezio" << endl;
         cout << "8 - Perimetro do trapezio" << endl;
+        cout << "9 - Area do Hexagono" << endl;
+        cout << "10 - Perimetro do Hexagono" << endl;
         cout << "0 - Sair" << endl;
-
         cout << "Digite uma opcao: ";
         cin >> opt;
         cout << endl;
 
-
-        switch (opt){
+        switch (opt)
+        {
         case 0:
             cout << "Saindo..." << endl;
             break;
@@ -109,7 +122,7 @@ void menu(int precisao){
         case 2:
             cout << "Digite o raio do circulo: ";
             cin >> raio;
-            
+
             cout << "Perimetro do circulo: " << perimetroCirculo(raio) << endl;
             break;
         case 3:
@@ -148,11 +161,35 @@ void menu(int precisao){
         case 8:
             perimetroTrapezio();
             break;
+        case 9:
+
+            cout << "Digite o lado do hexagono: ";
+            cin >> lado;
+            cout << "Area do Hexagono:"<<areaHexagono(lado);
+            break;
+        case 10:
+            cout << "Digite o lado do hexagono: ";
+            cin >> lado;
+            cout << "Perimetro do Hexagono:"<<perimetroHexagono(lado) << endl;
+            break;
         default:
             cout << "Opcao invalida!" << endl;
             break;
         }
 
         cout << endl;
-    }while(opt != 0);
+    } while (opt != 0);
+}
+
+double areaHexagono(double lado)
+{
+    double area;
+
+    area = (sqrt(3)) / 4;
+    area = 6 * (lado * lado * (area));
+    return area;
+}
+double perimetroHexagono(double lado)
+{
+    return (lado * 6);
 }
