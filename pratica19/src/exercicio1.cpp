@@ -8,9 +8,6 @@ class ItemSet{
     private:
         vector<string> itens;
     public:
-        ItemSet(){
-            itens = vector<string>();
-        }
         void inserir(string item){
             for(int i = 0; i < itens.size(); ++i){
                 if(itens[i] == item){
@@ -56,11 +53,11 @@ class ItemSet{
         ItemSet operator-(ItemSet itemSetB){
             ItemSet result;
 
-            for(string sB : itemSetB.itens){
-                if(!buscar(sB))
-                    result.inserir(sB);
+            for(string sA : itens){
+                if(!itemSetB.buscar(sA)){
+                    result.inserir(sA);
+                }
             }
-
             return result;
         }
 
@@ -90,6 +87,7 @@ int main(){
 
     C.inserir("item2");
     C.inserir("item3");
+    C.inserir("item4");
 
 
     cout << "\n1 - A = B" << endl;
@@ -123,13 +121,20 @@ int main(){
             B.printItens();
             cout << "C: ";
             C.printItens();
+            cout << "B - C: ";
             //A = B - C;
-            cout << "A: ";
-            (B-C).printItens();
+            (B - C).printItens();
             break;
         case 5: // A = B <> C
             break;
         case 6: // A = B == C
+            cout << "B: ";
+            B.printItens();
+            cout << "C: ";
+            C.printItens();
+            cout << "B - C: ";
+            //A = B - C;
+            (B - C).printItens();
             break;
         default:
             cout << "Opção inválida" << endl;
