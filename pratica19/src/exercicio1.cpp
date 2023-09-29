@@ -92,6 +92,7 @@ int main(){
             case 1:
                 sets.push_back(ItemSet());
             case 2:
+                // verificando se existem conjuntos
                 if (sets.size() == 0){
                     cout << "Nao existem conjuntos criados!" << endl;
                     break;
@@ -121,27 +122,30 @@ int main(){
                     cout << "Item ja existe no conjunto!" << endl;
                 break;
             case 3:
-                int j;
-                string item2;
-                cout << "Digite o item a ser removido: ";
-                cin >> item2;
+                // definindo indice do conjunto
                 cout << "Digite o indice do conjunto: ";
-                cin >> j;
-                if(j >= 0 && j < sets.size()){
-                    if(sets[j].deleteItem(item2))
-                        cout << "Item removido com sucesso!" << endl;
-                    else
-                        cout << "Item nao existe no conjunto!" << endl;
-                }else{
+                cin >> i;
+                if(i < 0){
                     cout << "Indice invalido!" << endl;
+                    break;
                 }
+                if(i >= sets.size()){
+                    cout << "Conjunto nao existe!" << endl;
+                    break;
+                }
+
+                // removendo item
+                cout << "Digite o item a ser removido: ";
+                cin >> item;
+                if(sets[i].deleteItem(item))
+                    cout << "Item removido com sucesso!" << endl;
+                else
+                    cout << "Item nao existe no conjunto!" << endl;
                 break;
             case 4:
                 for(int i = 0; i < sets.size(); i++){
-                    cout << "Conjunto " << i << ": ";
-                    for(string item : sets[i].getItens()){
-                        cout << item << " ";
-                    }
+                    cout << "Conjunto [" << i << "]: ";
+                    cout << sets[i].printItens();
                     cout << endl;
                 }
                 break;
