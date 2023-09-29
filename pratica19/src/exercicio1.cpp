@@ -8,6 +8,13 @@ class ItemSet{
     private:
         vector<string> itens;
     public:
+        ItemSet(){
+            itens = vector<string>();
+        }
+        ItemSet(vector<string> itens){
+            this->itens = itens;
+        }
+        
         vector<string> getItens(){
             return itens;
         }
@@ -38,6 +45,10 @@ class ItemSet{
 };
 
 int main(){
+    vector<ItemSet> itemSets;
+
+
+
 
 
     return 0;
