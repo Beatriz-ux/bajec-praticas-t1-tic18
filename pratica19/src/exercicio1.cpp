@@ -96,21 +96,29 @@ int main(){
                     cout << "Nao existem conjuntos criados!" << endl;
                     break;
                 }
-                if(opc == 2){
 
-                }
+                // definindo indice do conjunto
+                if(opc == 2){
+                    cout << "Digite indice do conjunto: ";
+                    cin >> i;
+                    if(i < 0){
+                        cout << "Indice invalido!" << endl;
+                        break;
+                    }
+                    if(i >= sets.size()){
+                        cout << "Conjunto nao existe!" << endl;
+                        break;
+                    }
+                }else
+                    i = sets.size() - 1;
+                
+                // inserindo item
                 cout << "Digite o item a ser inserido: ";
                 cin >> item;
-                cout << "Digite o indice do conjunto: ";
-                cin >> i;
-                if(i >= 0 && i < sets.size()){
-                    if(sets[i].inserirItem(item))
-                        cout << "Item inserido com sucesso!" << endl;
-                    else
-                        cout << "Item ja existe no conjunto!" << endl;
-                }else{
-                    cout << "Indice invalido!" << endl;
-                }
+                if(sets[i].inserirItem(item))
+                    cout << "Item inserido com sucesso!" << endl;
+                else
+                    cout << "Item ja existe no conjunto!" << endl;
                 break;
             case 3:
                 int j;
