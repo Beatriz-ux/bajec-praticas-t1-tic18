@@ -23,12 +23,11 @@ class ItemSet{
         }
 
         bool inserirItem(string s){
-            for(string item : itens){
-                if(item == s)
-                    return false;
-            }
-            itens.push_back(s);
-            return true;
+            if(itemPertence(s))
+                return false;
+            else
+                itens.push_back(s);
+                return true;
         }
 
         bool deleteItem(string s){
@@ -40,6 +39,22 @@ class ItemSet{
                 }
             }
             return false;
+        }
+
+        bool itemPertence(string s){
+            for(string item : itens){
+                if(item == s)
+                    return true;
+            }
+            return false;
+        }
+
+        int buscarItem(string s){
+            for(int i = 0; i < itens.size(); i++){
+                if(itens[i] == s)
+                    return i;
+            }
+            return -1;
         }
 
 };
@@ -63,7 +78,6 @@ int main(){
             case 1:
                 sets.push_back(ItemSet());
             case 2:
-                int i;
                 string item;
                 cout << "Digite o item a ser inserido: ";
                 cin >> item;
