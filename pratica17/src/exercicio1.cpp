@@ -3,11 +3,11 @@
 
 using namespace std;
 
-class hoje{
+class Ponto{
     private:
         double x, y;
     public:
-        hoje(double x=0, double y=0){
+        Ponto(double x=0, double y=0){
             this->x = x;
             this->y = y;
         };
@@ -36,7 +36,7 @@ class hoje{
 
 int main(void){
     hoje ponto(-2, 7);
-    ponto.setXY(1, 1);
+    Ponto ponto(3, 4);
     cout << "A distancia do ponto (" << ponto.getX() << ", " << ponto.getY() << ") ate a origem eh aproximadamente: " << ponto.distancia() << endl;
     
     return 0;
