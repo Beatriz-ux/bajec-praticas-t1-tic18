@@ -188,17 +188,17 @@ class Estoque{
 class CarrinhoDeCompras{
     private:
         Estoque carrinho;
-        Estoque *estoque;
+        Estoque estoque;
     public:
         CarrinhoDeCompras(Estoque estoque){
-            this->estoque = &estoque;
+            this->estoque = estoque;
         };
 
 
         bool adicionarProduto(Produto produto, int qtdProduto){
-            if(estoque->estoqueDisponivel(produto.getCodigo(), qtdProduto)){
+            if(estoque.estoqueDisponivel(produto.getCodigo(), qtdProduto)){
                 carrinho.addProduto(produto, qtdProduto);
-                estoque->attProduto(produto.getCodigo(), -qtdProduto);
+                estoque.attProduto(produto.getCodigo(), -qtdProduto);
                 return true;
             }
             return false;
@@ -220,7 +220,7 @@ class CarrinhoDeCompras{
             int qntd = carrinho.getQtdProduto(codigo);
 
             carrinho.removerProduto(codigo);
-            estoque->attProduto(codigo, qntd);
+            estoque.attProduto(codigo, qntd);
         }
 
         void removerProduto(int index){
@@ -234,7 +234,7 @@ class CarrinhoDeCompras{
                 return;
             }
             carrinho.setQtdProduto(produto.getCodigo(), carrinho.getQtdProduto(produto.getCodigo()) - qtd);
-            estoque->attProduto(produto.getCodigo(), qtd);
+            estoque.attProduto(produto.getCodigo(), qtd);
         }
 
         void esvaziarCarrinho(){
