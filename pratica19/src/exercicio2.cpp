@@ -167,19 +167,12 @@ int main()
     C.inserir("item3");
     C.inserir("item4");
 
-    D.inserir("item2");
-    D.inserir("item1");
-
-    E.inserir("item1");
-    E.inserir("item3");
-    E.inserir("item2");
-
     cout << "\n1 - A = B" << endl;
     cout << "2 - A = B + C" << endl;
     cout << "3 - A = B * C" << endl;
-    cout << "4 - Operador - " << endl;
+    cout << "4 - A = B - C " << endl;
     cout << "5 - A = B <> C" << endl;
-    cout << "6 - Operador == " << endl;
+    cout << "6 - B == C" << endl;
     cout << "0 - Sair" << endl;
     cout << "Opção: ";
     cin >> opcao;
@@ -197,7 +190,14 @@ int main()
         A.printItens();
         break;
     case 2: // A = B + C
+        cout << "\n(A = B + C) retorna um novo objeto ItemSet A com os itens de B e C." << endl;
+        cout << "Conjuntos: " << endl;
+        cout << "B: ";
+        B.printItens();
+        cout << "C: ";
+        C.printItens();
         A = B + C;
+        cout << "\nA = B + C = ";
         A.printItens();
         break;
     case 3: // A = B * C
@@ -209,10 +209,13 @@ int main()
         C.printItens();
 
         cout << endl;
+        A = B * C;
         cout << "B * C: ";
-        (B * C).printItens();
+        A.printItens();
+
+        A = C * B;
         cout << "C * B: ";
-        (C * B).printItens();
+        A.printItens();
         break;
     case 4: // A = B - C
         cout << "\n(A - B) retorna um novo objeto ItemSet com os itens de A que nao estao em B.\n";
@@ -221,12 +224,15 @@ int main()
         B.printItens();
         cout << "C: ";
         C.printItens();
-        cout << "\nB - C: ";
-        // A = B - C;
-        (B - C).printItens();
-        cout << "C - B: ";
-        // A = C - D;
-        (C - B).printItens();
+
+        A = B - C;
+        cout << "\nA = B - C = ";
+        A.printItens();
+
+        A = C - B;
+        cout << "A = C - B = ";
+        A.printItens();
+
         break;
     case 5: // A = B <> C
         cout << "\n(A <> B) retorna um novo objeto ItemSet com os itens de A e B que nao estao em ambos.\n";
@@ -249,19 +255,11 @@ int main()
         B.printItens();
         cout << "C: ";
         C.printItens();
-        cout << "D: ";
-        D.printItens();
-        cout << "E: ";
-        E.printItens();
-
         // comparacoes
         cout << "\nB == B: " << (B == B) << endl;
         cout << "B == C: " << (B == C) << endl;
         cout << "C == B: " << (C == B) << endl;
-        cout << "B == D: " << (B == D) << endl;
-        cout << "D == B: " << (D == B) << endl;
-        cout << "B == E: " << (B == E) << endl;
-        cout << "E == B: " << (E == B) << endl;
+        cout << "C == C: " << (C == C) << endl;
         break;
     default:
         cout << "Opção inválida" << endl;
