@@ -46,8 +46,12 @@ class ItemSet{
             return itens.size();
         }
 
-        ItemSet operator=(ItemSet &itemSet){
-            this->itens = itemSet.itens;
+        ItemSet& operator=(const ItemSet& itemSetB) {
+            if (this == &itemSetB) // Verifica se não é a mesma instância
+                return *this;
+
+            this->itens = itemSetB.itens;
+
             return *this;
         }
 
