@@ -131,7 +131,10 @@ class Estoque{
 
         bool estoqueDisponivel(string codigo, int qtd){
             int qntdProd = getQtdProduto(codigo);
-            (getQtdProduto(codigo) >= qtd && qntdProd != -1) ? true : false;
+            if(qntdProd >= qtd && qntdProd != -1)
+                return true;
+            else
+                return false;
         }
 
         Produto getProduto(string codigo){
@@ -221,7 +224,6 @@ class CarrinhoDeCompras{
         }
 
         void removerProduto(int index){
-            int qntd = carrinho.getQtdProduto(index);
             Produto p = carrinho.getProduto(index);
             carrinho.removerProduto(p.getCodigo());
         }
@@ -245,11 +247,11 @@ class CarrinhoDeCompras{
 
         void exibirCarrinho(){
             cout << "Carrinho de Compras: " << endl;
-            for(int i = 0; i < estoque.getQtdProdutos(); i++)
+            for(int i = 0; i < carrinho.getQtdProdutos(); i++)
             {
-                Produto p = estoque.getProduto(i);
+                Produto p = carrinho.getProduto(i);
                 cout << "- " << p.getNome() << " (" << p.getPreco() << ") x " <<
-                estoque.getQtdProduto(p.getCodigo()) << endl;
+                carrinho.getQtdProduto(p.getCodigo()) << endl;
             }
         }
 };
@@ -259,7 +261,7 @@ int main(){
 
     // teste 1
     cout << "Teste 1" << endl;
-    Produto p1("Maçã", 2.5);
+    Produto p1("Maca", 2.5);
     Produto p2("Arroz", 10.0);
     Produto p3("Leite", 4.0);
 
