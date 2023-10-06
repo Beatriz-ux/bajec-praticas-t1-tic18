@@ -89,6 +89,27 @@ class ItemSet{
             return true;
             
         }
+
+        /*
+        ItemSet operator<>(){
+            ItemSet result; // conjunto resultante
+
+            // busca cada item de B em C, se nao encontrar, insere no resultado
+            for(string sB : itens){
+                if(!buscar(sB)){
+                    result.inserir(sB);
+                }
+            }
+
+            // busca cada item de C em B, se nao encontrar, insere no resultado
+            for(string sC : itens){
+                if(!buscar(sC)){
+                    result.inserir(sC);
+                }
+            }
+
+            return result;
+        }*/
 };
 
 int main(){
@@ -169,6 +190,15 @@ int main(){
             (C - B).printItens();
             break;
         case 5: // A = B <> C
+            cout << "\n(A <> B) retorna um novo objeto ItemSet com os itens de A e B que nao estao em ambos.\n";
+            cout << "Conjuntos: \n";
+            cout << "B: ";
+            B.printItens();
+            cout << "C: ";
+            C.printItens();
+            cout << "\nB <> C: ";
+            //A = B <> C;
+            //(B <> C).printItens();
             break;
         case 6: // A = B == C
             cout << boolalpha;
