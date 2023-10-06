@@ -51,6 +51,18 @@ class ItemSet{
             return *this;
         }
 
+        ItemSet operator*(ItemSet itemSetB){
+            ItemSet result; // conjunto resultante
+
+            // busca cada item de A em B, se encontrar, insere no resultado
+            for(string itemSetA : itens){
+                if(itemSetB.buscar(itemSetA)){
+                    result.inserir(itemSetA);
+                }
+            }
+            return result;
+        }
+
         ItemSet operator-(ItemSet itemSetB){
             ItemSet result; // conjunto resultante
 
@@ -129,6 +141,18 @@ int main(){
         case 2: // A = B + C
             break;
         case 3: // A = B * C
+            cout << "\n(A = B * C) retorna um novo objeto ItemSet A com os itens de B que estao em C." << endl;
+            cout << "Conjuntos: " << endl;
+            cout << "B: ";
+            B.printItens();
+            cout << "C: ";
+            C.printItens();
+            
+            cout << endl;
+            cout << "B * C: ";
+            (B * C).printItens();
+            cout << "C * B: ";
+            (C * B).printItens();
             break;
         case 4: // A = B - C
             cout << "\n(A - B) retorna um novo objeto ItemSet com os itens de A que nao estao em B.\n";
@@ -156,9 +180,9 @@ int main(){
             B.printItens();
             cout << "C: ";
             C.printItens();
-            cout << "D:";
+            cout << "D: ";
             D.printItens();
-            cout << "E:";
+            cout << "E: ";
             E.printItens();
 
             // comparacoes
