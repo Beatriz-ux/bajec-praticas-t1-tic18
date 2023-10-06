@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
 
 using namespace std;
 
@@ -59,6 +60,10 @@ class Estoque{
         vector<int> qtdProdutos;
         vector<Produto> produtos;
     public:
+        Estoque(){
+            qtdProdutos = vector<int>();
+            produtos = vector<Produto>();
+        }
         void removerProduto(string codigo){
             for(int i = 0; i < produtos.size(); i++){
                 if(produtos[i].getCodigo() == codigo){
@@ -70,6 +75,7 @@ class Estoque{
 
             cout << "Produto não encontrado" << endl;
         }
+
 
         void addProduto(){
             Produto p;
@@ -95,6 +101,7 @@ class Estoque{
             qtdProdutos.push_back(qtd);
         }
 
+
         void addProduto(string nome, double preco, string codigo, int qtd){
             Produto p;
             p.setNome(nome);
@@ -109,6 +116,22 @@ class Estoque{
         void addProduto(Produto produto, int qtd){
             produtos.push_back(produto);
             qtdProdutos.push_back(qtd);
+        }
+        
+        // fluxo pode ser positivo ou negativo
+        bool attProduto(string codigo, int fluxo){
+            for(int i = 0; i < produtos.size(); i++){
+                if(produtos[i].getCodigo() == codigo){
+                    qtdProdutos[i] += fluxo;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        bool estoqueDisponivel(string codigo, int qtd){
+            int qntdProd = getQtdProduto(codigo);
+            (getQtdProduto(codigo) >= qtd && qntdProd != -1) ? true : false;
         }
 
         Produto getProduto(string codigo){
@@ -131,6 +154,10 @@ class Estoque{
                 }
             }
             return -1;
+        }
+
+        int getQtdProduto(int index){
+            return qtdProdutos[index];
         }
 
         int getQtdProdutos(){
@@ -157,18 +184,29 @@ class Estoque{
 
 class CarrinhoDeCompras{
     private:
-        Estoque estoque;
+        Estoque carrinho;
+        Estoque *estoque;
     public:
-        void adicionarProduto(Produto produto, int qtdProduto){
-            estoque.addProduto(produto, qtdProduto);
+        CarrinhoDeCompras(Estoque estoque){
+            this->estoque = &estoque;
+        };
+
+
+        bool adicionarProduto(Produto produto, int qtdProduto){
+            if(estoque->estoqueDisponivel(produto.getCodigo(), qtdProduto)){
+                carrinho.addProduto(produto, qtdProduto);
+                estoque->attProduto(produto.getCodigo(), -qtdProduto);
+                return true;
+            }
+            return false;
         }
 
         double calcularValorTotal(){
             double valorTotal = 0;
             
-            for(int i = 0; i < estoque.getQtdProdutos(); i++){
-                Produto p = estoque.getProduto(i);
-                int qtd = estoque.getQtdProduto(p.getCodigo());
+            for(int i = 0; i < carrinho.getQtdProdutos(); i++){
+                Produto p = carrinho.getProduto(i);
+                int qtd = carrinho.getQtdProduto(p.getCodigo());
                 valorTotal += p.getPreco() * qtd;
             }
 
@@ -176,32 +214,32 @@ class CarrinhoDeCompras{
         }
 
         void removerProduto(string codigo){
-            estoque.removerProduto(codigo);
+            int qntd = carrinho.getQtdProduto(codigo);
+
+            carrinho.removerProduto(codigo);
+            estoque->attProduto(codigo, qntd);
         }
 
         void removerProduto(int index){
-            Produto p = estoque.getProduto(index);
-            estoque.removerProduto(p.getCodigo());
+            int qntd = carrinho.getQtdProduto(index);
+            Produto p = carrinho.getProduto(index);
+            carrinho.removerProduto(p.getCodigo());
         }
 
         void removerProduto(Produto produto, int qtd){
-            if(estoque.getQtdProduto(produto.getCodigo()) - qtd < 0){
+            if(carrinho.getQtdProduto(produto.getCodigo()) - qtd < 0){
                 cout << "Quantidade inválida" << endl;
                 return;
             }
-            else if(estoque.getQtdProduto(produto.getCodigo()) - qtd == 0){
-                estoque.removerProduto(produto.getCodigo());
-                return;
-            }
-
-            estoque.setQtdProduto(produto.getCodigo(), estoque.getQtdProduto(produto.getCodigo()) - qtd);
+            carrinho.setQtdProduto(produto.getCodigo(), carrinho.getQtdProduto(produto.getCodigo()) - qtd);
+            estoque->attProduto(produto.getCodigo(), qtd);
         }
 
         void esvaziarCarrinho(){
             int i;
-            int tamanho = estoque.getQtdProdutos();
+            int tamanho = carrinho.getQtdProdutos();
             for (i = 0; i < tamanho; i++){
-                estoque.removerProduto(estoque.getProduto(0).getCodigo());
+                carrinho.removerProduto(carrinho.getProduto(0).getCodigo());
             }
         }
 };
@@ -215,7 +253,13 @@ int main(){
     Produto p2("Arroz", 10.0);
     Produto p3("Leite", 4.0);
 
-    CarrinhoDeCompras carrinho;
+    // adicionando produtos ao estoque
+    Estoque estoque;
+    estoque.addProduto(p1, 20);
+    estoque.addProduto(p2, 10);
+    estoque.addProduto(p3, 15);
+
+    CarrinhoDeCompras carrinho(estoque);
     carrinho.adicionarProduto(p1, 3);
     carrinho.adicionarProduto(p2, 2);
     carrinho.adicionarProduto(p3, 1);
@@ -235,7 +279,7 @@ int main(){
     cout << "Teste 3" << endl;
     carrinho.esvaziarCarrinho();
     valorTotal = carrinho.calcularValorTotal();
-    cout << "Valor total após esvaziar o carrinho: " << valorTotal << endl;
+    cout << "Valor total apos esvaziar o carrinho: " << valorTotal << endl;
     cout << "\n\n";
 
     // teste 4
