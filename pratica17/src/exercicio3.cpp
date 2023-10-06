@@ -242,10 +242,20 @@ class CarrinhoDeCompras{
                 carrinho.removerProduto(carrinho.getProduto(0).getCodigo());
             }
         }
+
+        void exibirCarrinho(){
+            cout << "Carrinho de Compras: " << endl;
+            for(int i = 0; i < estoque.getQtdProdutos(); i++)
+            {
+                Produto p = estoque.getProduto(i);
+                cout << "- " << p.getNome() << " (" << p.getPreco() << ") x " <<
+                estoque.getQtdProduto(p.getCodigo()) << endl;
+            }
+        }
 };
 
 int main(){
-    srand(time(NULL));
+    srand(time(0));
 
     // teste 1
     cout << "Teste 1" << endl;
@@ -285,10 +295,14 @@ int main(){
     // teste 4
     cout << "Teste 4" << endl;
     cout << "\n\n";
+    //OBS, quando terminar o teste 4, descomenta a linha no final do codigo que tem o "p4"
 
     // teste 5
-    cout << "Teste 5" << endl;
-    cout << "\n\n";
+    carrinho.adicionarProduto(p1, 2);
+    carrinho.adicionarProduto(p2, 3);
+    carrinho.adicionarProduto(p3, 1);
+    //carrinho.adicionarProduto(p4, 2);
+    carrinho.exibirCarrinho();
 
     return 0;
 }
