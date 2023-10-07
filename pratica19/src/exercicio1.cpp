@@ -85,12 +85,15 @@ int main(){
         cout << "0 - Sair" << endl;
         cout << "Opcao: ";
         cin >> opc;
+        cin.ignore();
 
         switch(opc){
             case 0:
                 break;
             case 1:
                 sets.push_back(ItemSet());
+                cout << "\nConjunto criado com sucesso!\n\n";
+                break;
             case 2:
                 // verificando se existem conjuntos
                 if (sets.size() == 0){
@@ -99,24 +102,23 @@ int main(){
                 }
 
                 // definindo indice do conjunto
-                if(opc == 2){
-                    cout << "\nDigite indice do conjunto: ";
-                    cin >> i;
-                    if(i < 0){
-                        cout << "Indice invalido!\n\n";
-                        break;
-                    }
-                    if(i >= sets.size()){
-                        cout << "Conjunto nao existe!\n\n";
-                        break;
-                    }
-                }else
-                    i = sets.size() - 1;
-                
+                cout << "\nDigite indice do conjunto: ";
+                cin >> i;
+                cin.ignore();
+                if(i < 0){
+                    cout << "Indice invalido!\n\n";
+                    break;
+                }
+
+                if(i >= sets.size()){
+                    cout << "Conjunto nao existe!\n\n";
+                    break;
+                }
+
                 // inserindo item
                 cout << "\nDigite o item a ser inserido: ";
                 getline(cin, item);
-                cin.ignore();
+
                 if(sets[i].inserirItem(item))
                     cout << "Item inserido com sucesso!\n" << endl;
                 else
@@ -132,6 +134,7 @@ int main(){
                 // definindo indice do conjunto
                 cout << "\nDigite o indice do conjunto: ";
                 cin >> i;
+                cin.ignore();
                 if(i < 0){
                     cout << "Indice invalido!\n\n";
                     break;
@@ -144,7 +147,7 @@ int main(){
                 // removendo item
                 cout << "Digite o item a ser removido: ";
                 getline(cin, item);
-                cin.ignore();
+
                 if(sets[i].deleteItem(item))
                     cout << "Item removido com sucesso!\n\n";
                 else
@@ -166,12 +169,7 @@ int main(){
                 cout << endl;
                 break;
             default:
-                do{
-                    cin.ignore();
-                    cout << "Opcao invalida!" << endl;
-                    cout << "Opcao: ";
-                    cin >> opc;
-                }while(opc < 0 || opc > 4);
+                cout << "Opcao invalida!" << endl;
                 break;
         }
 
