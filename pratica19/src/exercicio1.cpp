@@ -33,10 +33,7 @@ class ItemSet{
             }
             cout << endl;
         }
-        ItemSet operator=(ItemSet &itemSet){
-            this->itens = itemSet.itens;
-            return *this;
-        }
+
 };
 
 int main(){
@@ -50,23 +47,5 @@ int main(){
 
     cout << "B: ";
     B.printItens();
-
-    cout << "Insira sua operação: " << endl;
-    cout << "1 - A = B" << endl;
-    cout << "2 - A = B + C" << endl;
-    cout << "3 - A = B * C" << endl;
-    cout << "4 - A = B - C" << endl;
-    cout << "5 - A = B <> C" << endl;
-    cout << "6 - A = B == C" << endl;
-    cin >> opcao;
-
-    switch (opcao)
-    {
-    case 1:
-        A = B;
-        cout << "A: ";
-        A.printItens();
-        break;
-    };
     return 0;
 }
